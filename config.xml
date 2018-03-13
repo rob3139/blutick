@@ -12,6 +12,9 @@
 <platform name="ios" />
 <platform name="android" />
 <platform name="winphone" />
+    
+    <icon src="assets/images/logo-icon.png" platform="ios" width="180" height="180" />
+
 
   <description>
       Blutick
