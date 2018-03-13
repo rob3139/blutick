@@ -1,3 +1,5 @@
+@media (min-width: 768px){ .mini-sidebar .sidebar-nav #sidebarnav > li > ul { top: 51px; } }
+
 .non-interactive {
     opacity: 0.5;
         pointer-events: none;
