@@ -88,7 +88,7 @@ function checkAnswer(answer) {
                         $(".nextStep").hide();
                         $(".hint").hide();
                         
-                        if (quizzes[quizTypeId].numberCorrect == 1) {
+                        if (quizzes[quizTypeId].numberCorrect == quizTypes[tempQuizTypeId].questions.length) {
                             
                             completeQuiz(quizTypeId);
                             

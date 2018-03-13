@@ -598,8 +598,9 @@ Stop being able to proceed when they have an error line
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+   
          <script>
-             
+            
              $("#header").load("header.html");
                  $("#sidebar").load("sidebar.html");
              
@@ -662,10 +663,15 @@ Stop being able to proceed when they have an error line
              		
 
 				});
+                 
+                  
              
              $('.example-container').each(function(i, obj) {
+                 
+                
              		
                  quizzes[0].generateQuestion();
+                
                  
                    $(this).html(currentQuestions[quizTypeId].questionData.solutionSteps);
                     
@@ -675,6 +681,8 @@ Stop being able to proceed when they have an error line
 				});
              
              $('html').on('vclick click', '.mark-as-complete', function() {
+                 
+                 alert("test");
                        
                     var activePage = $(this).parent("div").parent("div").parent("div").attr("id");
                  
