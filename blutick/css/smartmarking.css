@@ -1,0 +1,222 @@
+.non-interactive {
+    opacity: 0.5;
+        pointer-events: none;
+}
+
+.btn-sm {
+    padding-top:5px !important;
+    padding-bottom: 2px !important;
+}
+
+.working-instructions {
+             padding-left:20px;
+             font-style: italic;
+         }
+         
+         .working-first-column {
+             padding-right: 30px;
+         }
+         .hintLHS {
+             text-align: left;
+             font-size: small;
+             padding:0;
+             margin-left:20px;
+         }
+         
+         .hintRHS {
+             text-align: right;
+             font-size: small;
+         }
+         
+         .workingLHS {
+             text-align: right;
+             padding-left: 20px;
+         }
+         
+         .workingRHS {
+             text-align: left;
+             padding-right: 20px;
+         }
+         
+         .staticMath {
+             position:relative;
+             top:-2px;
+         }
+         
+         .lesson-content {
+             display:none;
+         }
+    
+         .align-center {
+             text-align: center;
+         }
+        .course-title {
+            
+            color: #FFF;
+            padding: 9px 0 0 10px;
+            
+        }
+         
+         .shift-up {
+             
+             position:relative;
+             top:-4px;
+         }
+                                        
+                                        .sidebar-complete .ribbon {
+                                            padding:0;
+                                        }
+                                        
+                                        .sidebar-complete .ribbon i {
+                                            position:relative;
+                                        }
+                                        
+                                        .sidebar-complete {
+                                            padding:0 !important;
+                                        }
+                                        
+                                        .sidebar-complete a {
+                                            margin-left:37px;
+                                        }
+         
+         .mark-complete-padding {
+             margin-left:37px;
+             
+         }
+
+.highlighted {
+            /*position:relative;/* bring on top;*/
+            /*box-shadow:0 0 0 1600px rgba(0,0,0,0.65);/* dark around it */
+        }
+
+
+        .popout {
+            animation: popout 0.4s ease;
+            -webkit-animation: popout 0.4s ease;
+        }
+
+        @keyframes popout {
+            from {
+                transform: scale(0)
+            }
+            80% {
+                transform: scale(1.5)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+
+        @-webkit-keyframes popout {
+            from {
+                -webkit-transform: scale(0)
+            }
+            80% {
+                -webkit-transform: scale(1.5)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        .math-input {
+            border-color: lightgrey;
+        }
+        
+        .math-input-nontouch {
+            padding: 5px 5px 3px 3px;
+            border-radius: 5px;
+        }
+
+        .deleteButton {
+            color: red;
+            padding-left: 5px;
+            position: relative;
+            top: 2px;
+        }
+
+        .removeRow {
+            float: right;
+        }
+
+        .hint {
+            font-size: 80%;
+            position: absolute;
+            top:10px;
+            left: 5px;
+        }
+
+        .message {
+            font-size: 80%;
+        }
+
+        .wrong {
+            color: red;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .warning {
+            color: orange;
+        }
+
+.resultDiv {
+    
+    min-height: 100px;
+    padding-top:20px;
+}
+
+        table.workingTable tr td:first-child {
+
+            padding-right: 10px;
+
+        }
+
+        table.workingTable tr td:last-child {
+
+            padding-left: 10px;
+
+        }
+
+        .disabled {
+
+            pointer-events: none;
+            opacity: 0.8;
+            border: none;
+            padding: 5px 0;
+        }
+
+        .level {
+            position: relative;
+            top: 50px;
+            left: 0px;
+            font-weight: bold !important;
+        }
+
+        #tick {
+            color: #5cb85c;
+            font-size: 100px;
+            display: none;
+        }
+        
+        
+        .alignLeft {
+            text-align: left;
+        }
+    
+        .alignRight {
+            text-align: right;
+        }
+        
+        .working-equals {
+            padding-top: 7px;
+        }
+        
+        #answerDiv {
+            color: green;
+            font-weight: bold;
+            font-size: 120%;
+            margin:20px 40px;
+        }

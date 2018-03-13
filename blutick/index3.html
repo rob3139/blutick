@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--
+
+
+To do
+Store question type and difficulty in example-container div
+-- 
+Before demo
+Fix difficulties (inc avoiding 0x)
+Fix gap between sidebar menu on hover
+
+At some point
+vertically center tick and a on side-bar-complete, and make height flexible
+use :next or similar to set padding:0 for a after sidebar-complete 
+Stop being able to proceed when they have an error line
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>Blutick - Algebra</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="../assets/plugins/css-chart/css-chart.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="../assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="css/colors/green.css" id="theme" rel="stylesheet">
+    <link href="css/smartmarking.css" id="theme" rel="stylesheet">
+
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    
+    
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div id="header"></div>
+    <div id="sidebar"></div>
+    <script>
+             
+        $("#header").load("header.html", function() {
+  $(".course-title").html("Your Progress"); 
+}); $("#sidebar").load("sidebar.html");</script>
+        
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">Your Progress</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Progress</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-6 col-4 align-self-center">
+                        <button class="right-side-toggle waves-effect waves-light btn-info btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+                        <button class="btn pull-right hidden-sm-down btn-success"><i class="mdi mdi-share"></i> Share</button>
+                        
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-4">
+                                    <div class="card-body">
+                                        <h3>Lessons And Quizzes Completed</h3>
+                                        <h6 class="card-subtitle m-b-0">This graph shows the number of lessons and quizzes you have completed each day.</h6> </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 b-r align-self-center">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-row">
+                                            <div class="col-8 p-0 align-self-center">
+                                                <h3 class="m-b-0">86</h3>
+                                                <h5 class="text-muted m-b-0">Lessons</h5> </div>
+                                            <div class="col-4 text-right">
+                                                <div class="round align-self-center round-success"><i class="fa fa-file-video-o"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 align-self-center">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-row">
+                                            <div class="col-8 p-0 align-self-center">
+                                                <h3 class="m-b-0">79</h3>
+                                                <h5 class="text-muted m-b-0">Quizzes</h5> </div>
+                                            <div class="col-4 text-right">
+                                                <div class="round align-self-center round-success"><i class="fa fa-pencil"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <hr class="m-t-0"> </div>
+                            <div class="chartist-chart andvios m-t-40" style="height:350px;"> </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-inverse card-primary">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="fa fa-smile-o"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">Learning Streak</h3>
+                                        <h6 class="card-subtitle">Learn something each day to increase this streak</h6> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 align-self-center">
+                                        <span class="display-6 text-white">50 days</span>
+                                    </div>
+                                    <div class="col-8 align-self-center">
+                                        <div class="usage chartist-chart" style="height:120px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-inverse card-danger">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="fa fa-pencil"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">Quiz Streak</h3>
+                                        <h6 class="card-subtitle">Complete a quiz each day to increase this streak</h6> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 align-self-center">
+                                        <span class="display-6 text-white">32 days</span>
+                                    </div>
+                                    <div class="col-8  text-right">
+                                        <div class="spark-count" style="height:120px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-body">
+                            <h3 class="card-title">Notifications</h3>
+                            <div class="message-box">
+                                <div class="message-widget">
+                                    <!-- Message -->
+                                    <a href="#">
+                                        <div class="user-img"><span class="round bg-primary"><i class="mdi mdi-email"></i></span></div>
+                                        <div class="mail-contnet">
+                                            <h5>You have 3 new messages</h5> <span class="mail-desc">Daniel Kristeen, Hanna Giover, Jeffry Brown</span> <span class="time">9:30 AM</span> </div>
+                                    </a>
+                                    <!-- Message -->
+                                    <a href="#">
+                                        <div class="user-img"><span class="round bg-danger"><i class="mdi mdi-earth"></i></span></div>
+                                        <div class="mail-contnet">
+                                            <h5>New content available </h5> <span class="mail-desc">iGCSE past papers now ready for the taking</span> <span class="time">9:10 AM</span> </div>
+                                    </a>
+                                    <!-- Message -->
+                                    <a href="#">
+                                        <div class="user-img"> <span class="round bg-success"><i class="mdi mdi-refresh"></i></span></div>
+                                        <div class="mail-contnet">
+                                            <h5>2 quizzes incomplete</h5> <span class="mail-desc">Click here to retake your quizzes now</span> <span class="time">9:08 AM</span> </div>
+                                    </a>
+                                    <!-- Message -->
+                                    <a href="#">
+                                        <div class="user-img"><span class="round"><i class="mdi mdi-comment-check-outline"></i></span></div>
+                                        <div class="mail-contnet">
+                                            <h5>15 new questions</h5> <span class="mail-desc">Jhonny : Hey this stuff is awesome and how can i ..</span> <span class="time">9:02 AM</span> </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex no-block">
+                                    <h3 class="card-title">Topics completed</h3>
+                                    <div class="ml-auto">
+                                        <select class="custom-select">
+                                            <option selected="">January</option>
+                                            <option value="1">February</option>
+                                            <option value="2">March</option>
+                                            <option value="3">April</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="m-piechart" style="width:100%; height:278px"></div>
+                                <div class="text-center">
+                                    <ul class="list-inline m-t-20">
+                                        <li>
+                                            <h6 class="text-muted"><i class="fa fa-circle m-r-5 text-success"></i>Algebra</h6> </li>
+                                        <li>
+                                            <h6 class="text-muted"><i class="fa fa-circle m-r-5 text-primary"></i>Statistics</h6> </li>
+                                        <li>
+                                            <h6 class="text-muted"><i class="fa fa-circle m-r-5 text-danger"></i>Geometry</h6> </li>
+                                        <li>
+                                            <h6 class="text-muted"><i class="fa fa-circle m-r-5 text-muted"></i>Number</h6> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            
+                                    <ul class="product-review">
+                                        <li>
+                                            <span class="text-muted display-5"><i class="fa fa-file-video-o"></i></span>
+                                            <div class="dl m-l-10">
+                                                <h3 class="card-title">Lessons completed</h3>
+                                                <h6 class="card-subtitle">71 out of 115 lessons</h6>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 65%; height:6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text-muted display-5"><i class="fa fa-pencil"></i></span>
+                                            <div class="dl m-l-10">
+                                                <h3 class="card-title">Quizzes completed</h3>
+                                                <h6 class="card-subtitle">16 out of 97 quizzes</h6>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 15%; height:6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text-muted display-5"><i class="mdi mdi-marker"></i></span>
+                                            <div class="dl m-l-10">
+                                                <h3 class="card-title">Past papers</h3>
+                                                <h6 class="card-subtitle">4 out of 20 past papers</h6>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 35%; height:6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Column -->
+                           
+                    </div>
+                </div>
+               
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer"> © 2018 Blutick </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <script src="../assets/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!-- Chart JS -->
+    <script src="../assets/plugins/echarts/echarts-all.js"></script>
+    <!-- Flot Charts JavaScript -->
+    <script src="../assets/plugins/flot/excanvas.js"></script>
+    <script src="../assets/plugins/flot/jquery.flot.js"></script>
+    <script src="../assets/plugins/flot/jquery.flot.time.js"></script>
+    <script src="../assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="js/dashboard3.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+
+</html>

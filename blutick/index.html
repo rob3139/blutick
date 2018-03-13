@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<!--
+
+
+To do
+Store question type and difficulty in example-container div
+-- 
+Before demo
+Fix difficulties (inc avoiding 0x)
+Fix gap between sidebar menu on hover
+
+At some point
+vertically center tick and a on side-bar-complete, and make height flexible
+use :next or similar to set padding:0 for a after sidebar-complete 
+Stop being able to proceed when they have an error line
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>Blutick - Algebra</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="../assets/plugins/css-chart/css-chart.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="../assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="css/colors/green.css" id="theme" rel="stylesheet">
+
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/math.min.js"></script>
+    <script type="text/javascript" src="js/math-expressions.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+    
+    <link rel="stylesheet" href="css/mathquill.css" />
+    <link rel="stylesheet" href="css/smartmarking.css">
+    <script src="js/mathquill.js"></script>
+    <script src="js/smartmarkingfunctions.js"></script>
+    <script>
+
+    // Setup global variables
+    var quizTypes = new Array();
+            var quizzes = new Array();
+            var questionTypes = new Array();
+            var currentQuestions = new Array();
+
+
+    // Set keyboard 
+
+ var isTouch = false;
+        
+        if ('ontouchstart' in document.documentElement) {
+            
+            isTouch = true;
+            
+            console.log("You're on mobile!");
+        }
+    
+         if(isTouch)
+            {
+                document.write(unescape('%3Cscript src="./MathInput2_files/i18n.js"%3E%3C/script%3E%3Cscript src="./MathInput2_files/katex.js"%3E%3C/script%3E%3Cscript src="./MathInput2_files/deps.js"%3E%3C/script%3E%3Cscript src="./MathInput2_files/app.js"%3E%3C/script%3E'));
+                
+                var touchFieldValue = "";
+                
+                
+            } else {
+                
+                $( ".math-input" ).css( "border", "10px solid red" );
+                
+            }
+
+        var MQ = MathQuill.getInterface(2);
+
+        setupInteractivity();
+    </script>
+
+       
+    <script src="js/classes.js"></script>
+    <link rel="stylesheet" href="https://min.gitcdn.xyz/repo/wintercounter/Protip/master/protip.min.css">
+    
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+   
+    <div id="header"></div>
+    <div id="sidebar"></div>
+    
+    
+        
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid lesson-content" id="11">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0"><b>1.1</b> Introduction to solving equations</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Solving Equations</a></li>
+                            <li class="breadcrumb-item active">Introduction</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-6 col-4 align-self-center">
+                        <button class="btn pull-right hidden-sm-down btn-success mark-as-complete"><i class="fa fa-check-square-o"></i> Mark as complete</button>
+                       
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex flex-wrap">
+                                            <div>
+                                                <div class="card">
+                            
+                                                    
+                            <img class="card-img-top img-responsive" src="../assets/images/video-screenshot.png" alt="Card">
+                            
+                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Row -->
+                
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="pull-right"><i class="mdi mdi-refresh text-info refresh-example"></i></span>
+                                <h4 class="card-title">Worked Examples</h4>
+                                <div class="example-container"></div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="pull-right"><i class="mdi mdi-refresh text-info refresh-example"></i></span>
+                                <h4 class="card-title">Harder Worked Examples</h4>
+                                <div class="example-container"></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <button class="pull-right btn btn-sm btn-rounded btn-success" data-toggle="modal" data-target="#myModal">Ask A Question</button>
+                                <h4 class="card-title">Recent Questions</h4>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- Comment widgets -->
+                            <!-- ============================================================== -->
+                            <div class="comment-widgets">
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><span class="round"><img src="../assets/images/users/1.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text w-100">
+                                        <h5>James Anderson</h5>
+                                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                            <span class="label label-light-info">Pending</span>
+                                            <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row active">
+                                    <div class="p-2"><span class="round"><img src="../assets/images/users/2.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text active w-100">
+                                        <h5>Michael Jorden</h5>
+                                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
+                                        <div class="comment-footer ">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                            <span class="label label-light-success">Approved</span>
+                                            <span class="action-icons active">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="icon-close"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart text-danger"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><span class="round"><img src="../assets/images/users/3.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text w-100">
+                                        <h5>Johnathan Doeting</h5>
+                                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                            <span class="label label-light-danger">Rejected</span>
+                                            <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><span class="round"><img src="../assets/images/users/4.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text w-100">
+                                        <h5>James Anderson</h5>
+                                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                            <span class="label label-light-info">Pending</span>
+                                            <span class="action-icons">
+                                                        <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                        <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                        <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Related Topics</h4>
+                                <!-- ============================================================== -->
+                                <!-- To do list widgets -->
+                                <!-- ============================================================== -->
+                                ...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+                    <div class="container-fluid lesson-content" id="12">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0"><b>1.2</b> Simple Equations</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Solving Equations</a></li>
+                            <li class="breadcrumb-item active">Simple Equations</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-6 col-4 align-self-center">
+                        <button class="btn pull-right hidden-sm-down btn-success mark-as-complete"><i class="fa fa-check-square-o"></i> Mark as complete</button>
+                       
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex flex-wrap">
+                                            <div>
+                                                <div class="card">
+                            
+                                                    
+                            <img class="card-img-top img-responsive" src="../assets/images/video-screenshot.png" alt="Card">
+                            
+                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                        </div>
+                
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="pull-right"><i class="mdi mdi-refresh text-info refresh-example"></i></span>
+                                <h4 class="card-title">Worked Examples</h4>
+                                <div class="example-container"></div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <span class="pull-right"><i class="mdi mdi-refresh text-info refresh-example"></i></span>
+                                <h4 class="card-title">Harder Worked Examples</h4>
+                                <div class="example-container"></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <button class="pull-right btn btn-sm btn-rounded btn-success" data-toggle="modal" data-target="#myModal">Ask A Question</button>
+                                <h4 class="card-title">Recent Questions</h4>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- Comment widgets -->
+                            <!-- ============================================================== -->
+                            <div class="comment-widgets">
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><span class="round"><img src="../assets/images/users/1.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text w-100">
+                                        <h5>James Anderson</h5>
+                                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                            <span class="label label-light-info">Pending</span>
+                                            <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row active">
+                                    <div class="p-2"><span class="round"><img src="../assets/images/users/2.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text active w-100">
+                                        <h5>Michael Jorden</h5>
+                                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
+                                        <div class="comment-footer ">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                            <span class="label label-light-success">Approved</span>
+                                            <span class="action-icons active">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="icon-close"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart text-danger"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><span class="round"><img src="../assets/images/users/3.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text w-100">
+                                        <h5>Johnathan Doeting</h5>
+                                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                            <span class="label label-light-danger">Rejected</span>
+                                            <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><span class="round"><img src="../assets/images/users/4.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text w-100">
+                                        <h5>James Anderson</h5>
+                                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                            <span class="label label-light-info">Pending</span>
+                                            <span class="action-icons">
+                                                        <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                        <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                        <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Related Topics</h4>
+                                <!-- ============================================================== -->
+                                <!-- To do list widgets -->
+                                <!-- ============================================================== -->
+                                ...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+            
+            <div class="container-fluid lesson-content" id="13">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0"><b>1.3</b> Simple Equations - Quiz</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Solving Equations</a></li>
+                            <li class="breadcrumb-item active">Simple Equations Quiz</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                                <div class="card">
+                            
+                     
+                        <h2 class="font-medium text-inverse">Simple Equations Quiz</h2>
+                                                   <h6 class="card-subtitle">You need to get 6 questions correct to complete this quiz. Each question requires at least one line of working before giving the answer.</h6>
+                                         
+                            <div class = "quiz-container" id="quiz-container-0">
+                                
+                            </div>
+                        </div>
+                                            </div>
+                                      
+                                    
+                            </div>
+                                
+                                
+                                
+                                
+                                
+                        </div>
+                    </div>
+                </div>
+                     
+        </div>
+                
+                
+                 <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                                <div class="card">
+                            
+                     
+                        <h3 class="font-medium text-inverse">Quiz Progress</h3>
+                                       <h5 class="m-t-30"><span class="number-correct">0</span> out of 6 correct<span class="pull-right"></span></h5>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success quiz-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0; height:6px;"></div>
+                                        </div>
+                                            <br>
+                                                    <ul class="feeds">
+                                
+                                <li>
+                                    <div class="bg-light-warning"><i class="ti-control-forward"></i></div> Questions skipped: <b class="number-skipped">0</b></li>
+                                                       
+                                                    </ul>
+                        </div>
+                                            </div>
+                                      
+                                    
+                            </div>
+                                
+                                
+                        </div>
+                    </div>
+                </div>
+                     
+        </div>
+            
+            
+            
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2018 Blutick
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- chartist chart -->
+    <script src="../assets/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <!-- Chart JS -->
+    <script src="../assets/plugins/echarts/echarts-all.js"></script>
+    <script src="../assets/plugins/toast-master/js/jquery.toast.js"></script>
+    <!-- Chart JS -->
+    <script src="js/dashboard1.js"></script>
+    <script src="js/toastr.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+         <script>
+             
+             $("#header").load("header.html");
+                 $("#sidebar").load("sidebar.html");
+             
+             function doAnimation(object, animation) {
+                 
+                 object.addClass(animation + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                                object.removeClass(animation + ' animated');
+                                });
+                 
+             }
+             
+             function switchPage(activePage) {
+                 
+                 $(".container-fluid").fadeOut();
+                 $("#"+activePage).fadeIn();
+                 window.location.hash=activePage;
+                 window.scrollTo(0,0);
+                 $('.tabs').removeClass('active').parent().removeClass('active');
+                 $('a[href$="#'+activePage+'"]').addClass('active').parent().addClass('active');
+             }
+             
+             $(function () {
+                 
+                 
+                 
+             var activePage = "11";
+    if (window.location.hash && $(window.location.hash).is("div")) {
+        activePage = window.location.hash.substring(1)
+    }
+             
+             $("#"+activePage).show();
+             
+   $('html').on('vclick click', '.tabs', function() {
+       event.preventDefault();
+       var href = $(this).attr("href");
+       
+       href = href.split("#")[1];
+       switchPage(href);
+
+});
+             
+             
+             $('.quiz-container').each(function(i, obj) {
+
+             		// Get quizTypeId
+
+             		quizTypeId = getQuizTypeIdFromDiv($(this));
+
+             		// Create quiz
+
+             		quizzes[quizTypeId] = new Quiz(quizTypeId, Date.now(), 0, 0, null);
+
+             		// Create current question
+                 
+                 
+
+             		quizzes[quizTypeId].generateQuestion();
+
+             		setupSmartMarking(quizTypeId);
+             		
+
+				});
+             
+             $('.example-container').each(function(i, obj) {
+             		
+                 quizzes[0].generateQuestion();
+                 
+                   $(this).html(currentQuestions[quizTypeId].questionData.solutionSteps);
+                    
+                        setupMathFields();
+             		
+
+				});
+             
+             $('html').on('vclick click', '.mark-as-complete', function() {
+                       
+                    var activePage = $(this).parent("div").parent("div").parent("div").attr("id");
+                 
+                 if (activePage==12) {
+                     
+                      $.toast({
+            heading: 'Five lessons today!',
+            text: 'You\'ve earned a bronze badge, complete 5 more lessons to get a silver one!',
+            position: 'top-right',
+            loaderBg:'#ff6849',
+            icon: 'success',
+            hideAfter: 6000, 
+            stack: 6
+          });
+                 }
+                 
+                 if ($(this).hasClass("btn-success")) {
+                 
+                    $("#tab-"+activePage).before('<div class="ribbon-vwrapper sidebar-complete"><div class="ribbon ribbon-success ribbon-vertical-l"><i class="fa fa-check-circle"></i></div>').after("</div>");
+                 
+                    $("#tab-"+activePage).addClass("mark-complete-padding");
+                     
+                     doAnimation($("#tab-"+activePage).parent(), "bounceIn");
+                     
+                     var itemsLeft = parseInt($("#tab-"+activePage).parents("ul").prev().find(".label").html());
+                     
+                     if (itemsLeft) {
+                         
+                         itemsLeft --;
+                         
+                         $("#tab-"+activePage).parents("ul").prev().find(".label").html(itemsLeft);
+                         
+                         doAnimation($("#tab-"+activePage).parents("ul").prev().find(".label"), "rubberBand");
+                         
+                     }
+                     
+                     activePage++;
+                 switchPage(activePage);
+                     
+                     $(this).removeClass("btn-success").addClass("btn-warning").html('<i class="fa fa-window-close-o"></i> Mark as incomplete');
+                     
+                 } else {
+                     
+                     $("#tab-"+activePage).prev("div").find("div").remove();
+                 
+                     $("#tab-"+activePage).removeClass("mark-complete-padding");
+                     
+                     $(this).removeClass("btn-warning").addClass("btn-success").html('<i class="fa fa-check-square-o"></i> Mark as complete');
+                     
+                     var itemsLeft = parseInt($("#tab-"+activePage).parents("ul").prev().find(".label").html());
+                     
+                     if (itemsLeft) {
+                         
+                         itemsLeft ++;
+                         
+                         $("#tab-"+activePage).parents("ul").prev().find(".label").html(itemsLeft);
+                         
+                     }
+                    
+                 }
+                 
+                 
+                 
+                 
+                 
+                    });
+             
+             $(".sidebartoggler").on('click', function () {
+                 if ($("body").hasClass("mini-sidebar")) {
+                       $(".chapter-title").addClass("align-center");
+                 } else {
+                     $(".chapter-title").removeClass("align-center");
+                 }
+            });
+                 
+             });
+             
+            
+             
+</script>
+    
+    <script src="https://min.gitcdn.xyz/repo/wintercounter/Protip/master/protip.min.js"></script>
+    
+    <script>$(document).ready(function(){
+    $.protip();
+           
+        });
+        
+       </script>
+          
+</body>
+
+</html>
